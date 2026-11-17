@@ -1,111 +1,275 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KasKu App</title>
+  <title>KasKu.App — Kelola Arus Kas Bisnis &amp; Pribadi</title>
+
+  <!-- Favicon PNG -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="tailwind.config.js"></script>
+
 </head>
-<body>
+<body class="bg-light-background text-light-on-background min-h-screen font-body antialiased flex flex-col selection:bg-brand-primary selection:text-light-on-primary">
 
-  <div class="tracker-app">
-
-    <header class="tracker-header">
-      <h1 class="tracker-header__title">KasKu<span style="color:var(--accent-blue)">.App</span></h1>
-      <div class="tracker-header__user">
-        <div class="tracker-header__user-info">
-          <span class="tracker-header__greeting">Halo, <strong>Rusdi Abdul Gani (rusdi_abdul_gani20)</strong></span>
-          <span class="tracker-header__date">Bulan Ini</span>
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-light-surface/85 backdrop-blur-md border-b border-border-subtle transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-light-primary text-light-on-primary flex items-center justify-center shadow-sm">
+          <span class="material-symbols-outlined text-[24px]">account_balance_wallet</span>
         </div>
-        <div class="tracker-header__avatar" role="img" aria-label="Avatar Pengguna" aria-hidden="true">👤</div>
+        <div class="flex items-baseline">
+          <span class="font-headline text-headline-sm font-extrabold tracking-tight text-light-on-surface">KasKu</span>
+          <span class="font-headline text-headline-sm font-bold text-brand-primary">.App</span>
+        </div>
       </div>
-    </header>
 
-    <main>
-      <section class="tracker-summary" aria-labelledby="summary-heading">
-        <h2 id="summary-heading" class="visually-hidden">Ringkasan Keuangan</h2>
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#hero" class="relative font-label text-sm text-light-on-surface-variant font-semibold hover:text-brand-primary after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-full after:bg-brand-primary after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100 transition-colors">Beranda</a>
+        <a href="#fitur" class="relative font-label text-sm text-light-on-surface-variant font-semibold hover:text-brand-primary after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-full after:bg-brand-primary after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100 transition-colors">Fitur Layanan</a>
+        <a href="#keunggulan" class="relative font-label text-sm text-light-on-surface-variant font-semibold hover:text-brand-primary after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-0.5 after:w-full after:bg-brand-primary after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100 transition-colors">Keunggulan</a>
+      </nav>
 
-        <div class="tracker-summary__balance">
-          <h3 class="tracker-summary__label">Saldo Saat Ini</h3>
-          <p class="tracker-summary__balance-amount">Rp 0</p>
-        </div>
+      <div class="flex items-center gap-3">
+        <a href="workspace.html" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-light-primary text-light-on-primary font-label text-label-md shadow-sm hover:brightness-110 active:scale-[0.98] transition-all">
+          <span>Mulai Mencatat</span>
+          <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </header>
 
-        <div class="tracker-summary__stat">
-          <h3 class="tracker-summary__label">Pemasukan</h3>
-          <p class="tracker-summary__stat-amount tracker-summary__stat-amount--income">Rp 0</p>
-        </div>
+  <main class="flex-1">
 
-        <div class="tracker-summary__stat">
-          <h3 class="tracker-summary__label">Pengeluaran</h3>
-          <p class="tracker-summary__stat-amount tracker-summary__stat-amount--expense">Rp 0</p>
-        </div>
-      </section>
+    <!-- Hero -->
+    <section id="hero" class="relative overflow-hidden pt-12 pb-20 md:pt-15 md:pb-28 border-b border-border-subtle bg-gradient-to-b from-light-surface via-light-background to-light-background">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
 
-      <section class="tracker-form-section" aria-labelledby="form-heading">
-        <div class="tracker-form-section__card">
-          <h2 id="form-heading" class="tracker-form-section__heading">Tambah Pencatatan Baru</h2>
-
-          <form id="transactionForm" data-testid="transactionForm" class="tracker-form">
-            <div class="tracker-form__field">
-              <label class="tracker-form__label" for="transactionFormTitleInput">Keterangan</label>
-              <input type="text" id="transactionFormTitleInput" data-testid="transactionFormTitleInput" class="tracker-form__input" placeholder="Misal: Makan siang...">
+          <div class="lg:col-span-7 flex flex-col items-start text-left">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-light-surface border border-border-subtle shadow-sm mb-6">
+              <span class="w-2 h-2 rounded-full bg-brand-primary animate-ping"></span>
+              <span class="font-label text-label-sm text-light-on-surface-variant font-semibold">Untuk Pekerja &amp; Wirausaha Modern</span>
             </div>
-            <div class="tracker-form__field">
-              <label class="tracker-form__label" for="transactionFormAmountInput">Nominal (Rp)</label>
-              <input type="number" id="transactionFormAmountInput" data-testid="transactionFormAmountInput" class="tracker-form__input" placeholder="50000" min="1">
-            </div>
-            <div class="tracker-form__field">
-              <label class="tracker-form__label" for="transactionFormDateInput">Tanggal</label>
-              <input type="date" id="transactionFormDateInput" data-testid="transactionFormDateInput" class="tracker-form__input">
-            </div>
-            <div class="tracker-form__field">
-              <label class="tracker-form__label" for="transactionFormTypeSelect">Klasifikasi</label>
-              <select id="transactionFormTypeSelect" data-testid="transactionFormTypeSelect" class="tracker-form__input">
-                <option value="income">Uang Masuk (+)</option>
-                <option value="expense">Uang Keluar (-)</option>
-              </select>
-            </div>
-            <button type="submit" data-testid="transactionFormSubmitButton" class="tracker-form__submit">Simpan</button>
-          </form>
-        </div>
-      </section>
 
-      <section class="tracker-history" aria-labelledby="history-heading">
-        <h2 id="history-heading" class="visually-hidden">Riwayat Transaksi</h2>
+            <h1 class="font-headline text-display-lg-mobile md:text-display-lg text-light-on-surface font-extrabold tracking-tight mb-6 leading-tight">
+              Kelola Arus Kas Bisnis &amp; Pribadi dalam <span class="text-brand-primary underline decoration-border-subtle decoration-4 underline-offset-8">Satu Genggaman.</span>
+            </h1>
 
-        <div class="tracker-search">
-          <form id="searchTransactionForm" data-testid="searchTransactionForm" class="tracker-search__form" role="search">
-            <input type="search" id="searchTransactionFormTitleInput" data-testid="searchTransactionFormTitleInput" class="tracker-form__input" placeholder="Cari transaksi berdasarkan judul..." aria-label="Kata kunci pencarian transaksi">
-            <button type="submit" data-testid="searchTransactionFormSubmitButton" class="tracker-search__submit" aria-label="Mulai Pencarian">Cari</button>
-          </form>
-        </div>
+            <p class="font-body text-body-lg text-light-on-surface-variant mb-8 max-w-2xl leading-relaxed">
+              Catat pemasukan dan pengeluaran harian secara instan, rapi, dan terukur. Tanpa rumit, langsung siap digunakan untuk memantau kesehatan finansial Anda kapan pun dibutuhkan.
+            </p>
 
-        <div class="tracker-history__grid">
-          <div class="tracker-transaction-list">
-            <div class="tracker-transaction-list__header">
-              <h3 class="tracker-transaction-list__title">Arus Pemasukan</h3>
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
+              <a href="workspace.html" class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-light-primary text-light-on-primary font-label text-title-md font-semibold shadow-lg shadow-brand-primary/20 hover:shadow-xl hover:shadow-brand-primary/30 hover:-translate-y-0.5 active:translate-y-0 transition-all text-center">
+                <span>Mulai Catat Keuangan Sekarang</span>
+                <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+              </a>
+              <a href="#fitur" class="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-light-surface border border-border-subtle text-light-on-surface font-label text-title-md font-semibold hover:bg-light-surface-variant transition-colors text-center">
+                <span>Pelajari Fitur</span>
+                <span class="material-symbols-outlined text-[18px]">south</span>
+              </a>
             </div>
-            <div id="incomeList" data-testid="incomeList" class="tracker-transaction-list__container">
+
+            <div class="mt-10 pt-8 border-t border-border-subtle grid grid-cols-3 gap-6 w-full max-w-lg">
+              <div>
+                <p class="font-headline text-headline-sm font-bold text-light-on-surface">100%</p>
+                <p class="font-label text-label-sm text-light-on-surface-variant">Lokal &amp; Pribadi</p>
+              </div>
+              <div>
+                <p class="font-headline text-headline-sm font-bold text-light-on-surface">0 Detik</p>
+                <p class="font-label text-label-sm text-light-on-surface-variant">Tanpa Registrasi</p>
+              </div>
+              <div>
+                <p class="font-headline text-headline-sm font-bold text-light-on-surface">Real-time</p>
+                <p class="font-label text-label-sm text-light-on-surface-variant">Kalkulasi Otomatis</p>
+              </div>
             </div>
           </div>
 
-          <div class="tracker-transaction-list">
-            <div class="tracker-transaction-list__header">
-              <h3 class="tracker-transaction-list__title">Arus Pengeluaran</h3>
-            </div>
-            <div id="expenseList" data-testid="expenseList" class="tracker-transaction-list__container">
+          <!-- Mockup -->
+          <div class="lg:col-span-5 flex justify-center">
+            <div class="w-full max-w-md animate-float">
+              <div class="bg-light-surface rounded-2xl border border-border-subtle shadow-xl p-6 relative overflow-hidden backdrop-blur-sm">
+
+                <div class="flex items-center justify-between pb-4 border-b border-border-subtle mb-6">
+                  <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-lg bg-light-surface-variant flex items-center justify-center text-brand-primary">
+                      <span class="material-symbols-outlined text-[18px]">query_stats</span>
+                    </div>
+                    <div>
+                      <p class="font-title text-title-md font-bold text-light-on-surface leading-tight">Overview  KasKu</p>
+                      <p class="font-label text-label-sm text-light-on-surface-variant">Update Otomatis</p>
+                    </div>
+                  </div>
+                  <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-light-income-container text-semantic-income font-label text-label-sm font-bold">
+                    <span class="w-1.5 h-1.5 rounded-full bg-semantic-income"></span>
+                    Surplus
+                  </span>
+                </div>
+
+                <div class="bg-light-surface-variant/70 rounded-xl p-5 mb-5 border border-border-subtle/80">
+                  <p class="font-label text-label-sm text-light-on-surface-variant font-medium mb-1">Total Saldo Bersih Saat Ini</p>
+                  <p class="font-headline text-headline-lg-mobile text-light-on-surface font-extrabold tabular-nums tracking-tight">Rp 12.850.000</p>
+                  <div class="mt-3 flex items-center gap-2 text-label-sm text-semantic-income font-semibold">
+                    <span class="material-symbols-outlined text-[18px]">trending_up</span>
+                    <span>Pertumbuhan kas +18.4% bulan ini</span>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 mb-5">
+                  <div class="p-3.5 rounded-xl border border-border-subtle bg-light-surface">
+                    <span class="font-label text-label-sm text-light-on-surface-variant block mb-1">Uang Masuk (+)</span>
+                    <span class="font-title text-title-md font-bold text-semantic-income tabular-nums">Rp 18.500.000</span>
+                  </div>
+                  <div class="p-3.5 rounded-xl border border-border-subtle bg-light-surface">
+                    <span class="font-label text-label-sm text-light-on-surface-variant block mb-1">Uang Keluar (-)</span>
+                    <span class="font-title text-title-md font-bold text-semantic-expense tabular-nums">Rp 5.650.000</span>
+                  </div>
+                </div>
+
+                <div class="space-y-2.5">
+                  <p class="font-label text-label-sm text-light-on-surface-variant font-semibold">Transaksi Terbaru</p>
+
+                  <div class="flex items-center justify-between p-2.5 rounded-lg bg-light-surface-variant/40 border border-border-subtle/50 text-label-md">
+                    <div class="flex items-center gap-2">
+                      <span class="w-2 h-2 rounded-full bg-semantic-income"></span>
+                      <span class="font-medium text-light-on-surface">Invoice Proyek Desain UI</span>
+                    </div>
+                    <span class="font-bold text-semantic-income tabular-nums">+Rp 7.500.000</span>
+                  </div>
+
+                  <div class="flex items-center justify-between p-2.5 rounded-lg bg-light-surface-variant/40 border border-border-subtle/50 text-label-md">
+                    <div class="flex items-center gap-2">
+                      <span class="w-2 h-2 rounded-full bg-semantic-expense"></span>
+                      <span class="font-medium text-light-on-surface">Biaya Sewa &amp; Server</span>
+                    </div>
+                    <span class="font-bold text-semantic-expense tabular-nums">-Rp 650.000</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+
         </div>
-      </section>
+      </div>
+    </section>
 
-    </main>
+    <!-- Layanan Utama -->
+    <section id="fitur" class="py-24 bg-light-surface border-b border-border-subtle">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <footer class="tracker-footer">
-      <p>&#169; 2026 KasKu.App</p>
-    </footer>
+        <div class="text-center max-w-3xl mx-auto mb-16 reveal-item">
+          <span class="font-label text-label-sm text-brand-primary font-bold tracking-widest uppercase mb-3 inline-block">Layanan Utama</span>
+          <h2 class="font-headline text-headline-lg text-light-on-surface font-extrabold tracking-tight mb-4">
+            Fokus pada Hal yang Paling Penting bagi Finansial Anda
+          </h2>
+          <p class="font-body text-body-lg text-light-on-surface-variant">
+            Pencatatan kas yang ringkas memudahkan Anda mengambil keputusan bisnis secara akurat tanpa terbebani kerumitan aplikasi akuntansi konvensional.
+          </p>
+        </div>
 
-  </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+          <div class="reveal-item p-8 rounded-2xl bg-light-background border border-border-subtle hover:border-brand-primary transition-all duration-300 hover:shadow-md group">
+            <div class="w-14 h-14 rounded-2xl bg-light-income-container text-semantic-income flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <span class="material-symbols-outlined text-[30px]">trending_up</span>
+            </div>
+            <h3 class="font-headline text-headline-md text-light-on-surface font-bold mb-3">Pencatatan Pemasukan Terstruktur</h3>
+            <p class="font-body text-body-md text-light-on-surface-variant leading-relaxed mb-6">
+              Pantau setiap sumber pendapatan mulai dari gaji bulanan, pembayaran klien freelance, hingga omzet penjualan usaha harian secara real-time. Ketahui persis dari mana arus dana masuk Anda berasal.
+            </p>
+            <ul class="space-y-2.5 font-label text-label-md text-light-on-surface">
+              <li class="flex items-center gap-2"><span class="material-symbols-outlined text-semantic-income text-[18px]">check_circle</span><span>Kategorisasi pendapatan usaha &amp; gaji terpisah</span></li>
+              <li class="flex items-center gap-2"><span class="material-symbols-outlined text-semantic-income text-[18px]">check_circle</span><span>Format nominal otomatis dalam pecahan Rupiah</span></li>
+              <li class="flex items-center gap-2"><span class="material-symbols-outlined text-semantic-income text-[18px]">check_circle</span><span>Agregasi pemasukan langsung pada kartu ringkasan</span></li>
+            </ul>
+          </div>
+
+          <div class="reveal-item p-8 rounded-2xl bg-light-background border border-border-subtle hover:border-brand-primary transition-all duration-300 hover:shadow-md group">
+            <div class="w-14 h-14 rounded-2xl bg-light-expense-container text-semantic-expense flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <span class="material-symbols-outlined text-[30px]">trending_down</span>
+            </div>
+            <h3 class="font-headline text-headline-md text-light-on-surface font-bold mb-3">Kontrol Pengeluaran Operasional &amp; Pribadi</h3>
+            <p class="font-body text-body-md text-light-on-surface-variant leading-relaxed mb-6">
+              Catat setiap biaya operasional usaha maupun pengeluaran rutin harian agar arus kas tetap terkendali dan terhindar dari kebocoran anggaran yang tidak disadari.
+            </p>
+            <ul class="space-y-2.5 font-label text-label-md text-light-on-surface">
+              <li class="flex items-center gap-2"><span class="material-symbols-outlined text-semantic-expense text-[18px]">check_circle</span><span>Monitoring beban operasional, tagihan, &amp; konsumsi</span></li>
+              <li class="flex items-center gap-2"><span class="material-symbols-outlined text-semantic-expense text-[18px]">check_circle</span><span>Deteksi dini pengeluaran yang melebihi batas saldo</span></li>
+              <li class="flex items-center gap-2"><span class="material-symbols-outlined text-semantic-expense text-[18px]">check_circle</span><span>Pencarian dan peninjauan riwayat pengeluaran cepat</span></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Keunggulan -->
+    <section id="keunggulan" class="py-20 bg-light-background border-b border-border-subtle">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center max-w-2xl mx-auto mb-16 reveal-item">
+          <h2 class="font-headline text-headline-lg text-light-on-surface font-extrabold tracking-tight mb-4">Mengapa Memilih KasKu.App?</h2>
+          <p class="font-body text-body-lg text-light-on-surface-variant">Didesain ulang dengan standar performa modern untuk kecepatan dan kenyamanan penggunaan sehari-hari.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="reveal-item bg-light-surface p-6 rounded-xl border border-border-subtle shadow-sm">
+            <div class="w-12 h-12 rounded-lg bg-light-surface-variant text-brand-primary flex items-center justify-center mb-4"><span class="material-symbols-outlined text-[24px]">speed</span></div>
+            <h3 class="font-title text-title-lg font-bold text-light-on-surface mb-2">Instan &amp; Ringan</h3>
+            <p class="font-body text-body-md text-light-on-surface-variant">Tanpa perlu instalasi aplikasi berat atau login yang memakan waktu. Buka di browser dan langsung catat transaksi Anda dalam hitungan detik.</p>
+          </div>
+          <div class="reveal-item bg-light-surface p-6 rounded-xl border border-border-subtle shadow-sm">
+            <div class="w-12 h-12 rounded-lg bg-light-surface-variant text-brand-primary flex items-center justify-center mb-4"><span class="material-symbols-outlined text-[24px]">lock</span></div>
+            <h3 class="font-title text-title-lg font-bold text-light-on-surface mb-2">Privasi Terjaga</h3>
+            <p class="font-body text-body-md text-light-on-surface-variant">Semua data finansial tersimpan aman di penyimpanan lokal (localStorage) browser perangkat Anda sendiri tanpa dikirim ke server pihak ketiga.</p>
+          </div>
+          <div class="reveal-item bg-light-surface p-6 rounded-xl border border-border-subtle shadow-sm">
+            <div class="w-12 h-12 rounded-lg bg-light-surface-variant text-brand-primary flex items-center justify-center mb-4"><span class="material-symbols-outlined text-[24px]">devices</span></div>
+            <h3 class="font-title text-title-lg font-bold text-light-on-surface mb-2">Responsif di Semua Layar</h3>
+            <p class="font-body text-body-md text-light-on-surface-variant">Tata letak yang secara otomatis beradaptasi mulus dari layar smartphone, tablet, hingga layar monitor desktop Anda.</p>
+          </div>
+        </div>
+
+        <div class="mt-16 reveal-item bg-light-primary rounded-2xl p-8 md:p-12 text-center text-light-on-primary shadow-xl">
+          <h3 class="font-headline text-headline-lg font-extrabold mb-3">Siap Merapikan Catatan Keuangan Anda?</h3>
+          <p class="font-body text-body-lg text-white/90 max-w-2xl mx-auto mb-8">Beralih ke pencatatan digital yang rapi dan terukur sekarang juga bersama KasKu.App.</p>
+          <a href="workspace.html" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-light-surface text-brand-primary font-label text-title-md font-bold shadow-md hover:bg-light-surface-variant transition-colors">
+            <span>Buka Workspace KasKu</span>
+            <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-light-surface border-t border-border-subtle py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="font-headline text-title-md font-extrabold text-light-on-surface">KasKu<span class="text-brand-primary">.App</span></span>
+        <span class="text-light-outline">|</span>
+        <p class="font-label text-label-sm text-light-on-surface-variant">© 2026 KasKu.App — Digital Finance Tracker</p>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="#hero" class="font-label text-label-sm text-light-on-surface-variant hover:text-brand-primary transition-colors flex items-center gap-1">
+          <span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+          <span>Kembali ke Atas</span>
+        </a>
+      </div>
+    </div>
+  </footer>
 
   <script src="main.js"></script>
 </body>
