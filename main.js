@@ -1,5 +1,5 @@
 /* ==========================================================
-   KasKu.App — main.js
+   KasKu — main.js
    Dipakai bersama oleh index.html (landing) dan workspace.html.
    Setiap fitur hanya berjalan jika elemennya ada di halaman.
    ========================================================== */
